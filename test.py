@@ -12,6 +12,9 @@ def load_word():
     secret_word = random.choice(words_list)
     return secret_word
 
+
+# creates a list for the currently matched letter guesses (starts empty)
+# appends the list with the letter if that letter is in the secret word, and returns the variable matched_letters
 def find_matched_letters(secret, guess):
     matched_letters = []
     for letter in guess:
@@ -19,8 +22,11 @@ def find_matched_letters(secret, guess):
             matched_letters.append(letter)
     return matched_letters
 
+
+# updates the list of matching letters and returns a string
+# it knows where to add the letter in the list to b/c we initialize the list to a list of "_"the length of the secret word in def spaceman()  
 def update_matching_letters(secret, guess, previous_matching_letters):
-    matching_letters = list(previous_matching_letters)
+    matching_letters = list(previous_matching_letters) # initializes a list if no letters match, otherwise it overwrites the existing list
     for i in range(len(secret)):
         if secret[i] == guess:
             matching_letters[i] = guess
@@ -29,8 +35,8 @@ def update_matching_letters(secret, guess, previous_matching_letters):
 def spaceman():
     secret = load_word()
     matching_letters = ['_'] * len(secret)
-    attempts = 7
     word_length = "_" * len(secret)
+    attempts = 7
 
     instructions()
     print(f"Your current word is {word_length}")
@@ -51,7 +57,7 @@ def spaceman():
             print(f"Good guess! Current progress: {matching_letters}")
         else:
             attempts -= 1
-            print(f"Incorrect guess. You have {attempts} attempts left.\n Remember your current guess is {matching_letters}")
+            print(f"Incorrect guess. You have {attempts} attempts left.\n Remember your current guess is {''.join(matching_letters)}")
 
         if '_' not in matching_letters:
             print(f"Congratulations! You guessed the secret word: {secret}")

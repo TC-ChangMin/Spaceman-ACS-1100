@@ -10,13 +10,6 @@ def load_word():
     secret_word = random.choice(words_list)
     return secret_word
 
-# def clear_terminal():
-#     # Clear the terminal screen for a fresh game state display. 
-#     if os.name == 'nt':  # For Windows
-#         os.system('cls')
-#     else:  # For Linux and MacOS
-#         os.system('clear')
-
 def is_word_guessed(secret_word, letters_guessed):
     # Check if all letters in the secret word have been guessed. 
     for letter in secret_word:
@@ -42,7 +35,6 @@ def spaceman(secret_word):
     # Main game loop for the Spaceman guessing game. 
     letters_guessed = []
     attempts_left = 7
-    # first_iteration = True  # Flag for the first game iteration
 
     # Introduction to the game
     print('Welcome to Spaceman! You need to guess the secret word one letter at a time, similar to how Hangman is played!')
@@ -50,8 +42,7 @@ def spaceman(secret_word):
     print(f'The secret word has {"_ " * len(secret_word)} letters.')
 
     while attempts_left > 0:
-        # if not first_iteration:
-        #     clear_terminal()  # Clear the terminal after the first guess
+
 
         # Display current game status
         guessed_word = get_guessed_word(secret_word, letters_guessed)

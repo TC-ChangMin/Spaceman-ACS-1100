@@ -23,6 +23,7 @@ def is_word_guessed(secret_word, letters_guessed):
 
 '''Pseudo Code:
 This will display the currently hidden word with underscores or the letter that has been guessed correctly
+loops through the hidden word and matches the user's input with each letter in the word
 If the user input's letter is within the hidden word we will display that letter, otherwise we display an underscore'''
 
 def get_guessed_word(secret_word, letters_guessed):

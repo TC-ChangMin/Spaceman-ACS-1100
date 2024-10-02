@@ -1,5 +1,4 @@
 import random
-import os
 
 def load_word():
     # Load a random word from a file for the game. 
@@ -10,12 +9,21 @@ def load_word():
     secret_word = random.choice(words_list)
     return secret_word
 
+
+'''Pseudo Code:
+Use secret word and loop through it so we can check each letter of the word
+Return the value of True if the letter the user picks is inside the secret word'''
+
 def is_word_guessed(secret_word, letters_guessed):
     # Check if all letters in the secret word have been guessed. 
     for letter in secret_word:
         if letter not in letters_guessed:
             return False
     return True
+
+'''Pseudo Code:
+This will display the currently hidden word with underscores or the letter that has been guessed correctly
+If the user input's letter is within the hidden word we will display that letter, otherwise we display an underscore'''
 
 def get_guessed_word(secret_word, letters_guessed):
     # Return the current guessed word with underscores for unguessed letters. 
@@ -27,10 +35,23 @@ def get_guessed_word(secret_word, letters_guessed):
             guessed_word += '_'
     return guessed_word
 
+'''Pseudo Code:
+Checks to see if the user guessed letter is within the secret word
+Returns true if it is, otherwise false'''
+
 def is_guess_in_word(guess, secret_word):
     # Check if the player's guessed letter is in the secret word. 
     return guess in secret_word  # True or False if the guess is in the word
 
+
+'''Pseudo Code:
+Runs the program
+Initializes global variables for the game and calls our functions
+A list should be used to contain our guessed letters
+Error checks so our inputs are only letters
+Displays text if our input is valid or invalid
+If no more chances are left, the game will end and display the secret word
+Or if we guess the word a win message will be displayed'''
 def spaceman(secret_word):
     # Main game loop for the Spaceman guessing game. 
     letters_guessed = []
